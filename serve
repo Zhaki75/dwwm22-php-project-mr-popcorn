@@ -1,0 +1,7 @@
+<?php
+
+echo "\nPress Ctrl-C to shotdown this server\n\n";
+
+exec("php -S localhost:8000 -t public");
+
+
