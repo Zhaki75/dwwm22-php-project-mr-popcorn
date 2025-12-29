@@ -1,12 +1,33 @@
 <?php
 session_start();
 
+    // include_once et require_once font la même chose, sauf que si le fichier n’existe pas :
+
+    // require_once → erreur fatale, le script s’arrête
+
+    // include_once → warning, le script continue
+
     require_once __DIR__ . "/../functions/db.php";
+    // J’ai besoin de toutes les fonctions qui parlent à la base de données
+    // “Si je n’ai pas accès à la base, je ne peux rien faire → stop si problème.”
+
+
     require_once __DIR__ . "/../functions/helpers.php";
+    // J’ai besoin des petites fonctions utiles (sécurité, formatage, etc.)
+
+
+    // 💡 Sans ces lignes, getFilms() n’existerait pas.
 
     // 1. Etablir une connexion avec la base de données
     // 2. Effectuer la requête de sélection de tous les films de la base de données
+
     $films = getFilms();
+    // Va chercher tous les films dans la base de données, et mets-les dans la variable $films
+    // ⚠️ À ce moment-là : PHP ne fait pas encore d’affichage Il prépare les données
+    //  - Connexion à la base
+    //  - Requête SQL
+    //  - Recuperation films
+    //  - Retour résultat stocker dans $films
 
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 ?>
@@ -16,6 +37,7 @@ session_start();
     $keywords = "Cinéma, répertoire, film, dwwm22";
 ?>
 <?php include_once __DIR__ . "/../partials/head.php"; ?>
+<!-- “Si la navigation n’est pas là, ce n’est pas grave, je continue.” -->
 
     <?php include_once __DIR__ . "/../partials/nav.php"; ?>
 

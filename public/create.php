@@ -137,7 +137,6 @@ session_start();
             <div class="container mt-3">
                 <div class="row">
                     <div class="col-md-8 col-lg-4 mx-auto p-4 bg-white shadow rounded">
-
                         <?php if(isset($_SESSION['form_errors']) && !empty($_SESSION['form_errors'])) : ?>
                             <div class="alert alert-danger" role="alert">
                                 <ul>
@@ -148,7 +147,6 @@ session_start();
                                 </ul>
                             </div>
                         <?php endif ?>
-
                         <form method="post">
                             <div class="mb-3">
                                 <label for="title">Titre <span class="text-danger">*</span></label>
